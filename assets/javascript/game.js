@@ -1,8 +1,11 @@
+  
+  
   var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
   var wins = 0;
   var losses = 0;
   var lives = 10;
+  
 
   document.onkeyup = function (event) {
 
@@ -10,13 +13,23 @@
 
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
+
+  if (lives > 0){
     if (userGuess === computerGuess) {
       wins++;
     } else if (userGuess != computerGuess) {
       losses++;
       lives--;
-    }
+    }}
 
+   if (lives < 1){
+
+  setTimeout(function() {alert("you're out of lives!");}, 200); 
+}      
+
+
+     
+    
     var html =
       "<p>You chose: " + userGuess + "</p>" +
       "<p>The computer chose: " + computerGuess + "</p>" +
@@ -25,4 +38,6 @@
       "<p>lives: " + lives + "</p>";
 
     document.querySelector("#game").innerHTML = html;
-  }
+  
+}
+
